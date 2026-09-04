@@ -1,0 +1,42 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: 3px;
+    font-size: .74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    white-space: nowrap;
+    background: var(--surface-muted);
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+}
+
+.badge--game[data-game="magic"] {
+    background: #fff0e8;
+    border-color: #ffd2ba;
+    color: #b23f00;
+}
+
+.badge--game[data-game="pokemon"] {
+    background: #fff8e0;
+    border-color: #f2e0a8;
+    color: #8a6100;
+}
+
+.badge--game[data-game="yugioh"] {
+    background: #eef4fb;
+    border-color: #cddef2;
+    color: #1d4f8f;
+}
+
+.badge--rarity[data-rarity="comum"] { background: #f0f1f2; color: #4a5158; }
+.badge--rarity[data-rarity="incomum"] { background: var(--confirm-soft); color: var(--confirm-strong); }
+.badge--rarity[data-rarity="rara"] { background: #eef4fb; color: #1d4f8f; }
+.badge--rarity[data-rarity="super-rara"] { background: #f1ecfa; color: #5b2ca8; }
+.badge--rarity[data-rarity="ultra-rara"] { background: #fce9f1; color: #97256a; }
+.badge--rarity[data-rarity="secreta"] { background: #2b2f33; color: #f4f5f6; border-color: #2b2f33; }
+.badge--rarity[data-rarity="mitica"] { background: #ffe9d8; color: #b23f00; }
+.badge--rarity[data-rarity="promocional"] { background: #fff8e0; color: #8a6100; }

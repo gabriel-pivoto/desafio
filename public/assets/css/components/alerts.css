@@ -1,0 +1,21 @@
+.alert {
+    display: flex;
+    gap: 10px;
+    padding: 11px 14px;
+    border-radius: var(--radius-sm);
+    font-size: .9rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.alert--error {
+    background: var(--danger-soft);
+    color: var(--danger-strong);
+    border: 1px solid #f2ccd1;
+}
+
+.alert--info {
+    background: var(--brand-soft);
+    color: #b23f00;
+    border: 1px solid var(--brand-border);
+}

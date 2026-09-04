@@ -1,0 +1,152 @@
+@media (max-width: 980px) {
+    .toolbar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .view-toggle {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 860px) {
+    .login {
+        grid-template-columns: 1fr;
+    }
+
+    .login__brand {
+        padding: 32px 24px;
+        gap: 14px;
+    }
+
+    .login__cards {
+        display: none;
+    }
+}
+
+@media (max-width: 760px) {
+    .app-header {
+        gap: 10px;
+    }
+
+    .app-header__logo {
+        font-size: .9rem;
+        white-space: nowrap;
+    }
+
+    
+    .app-header__name small {
+        display: none;
+    }
+
+    .app-subbar__inner {
+        flex-wrap: wrap;
+    }
+
+    .app-subbar .search-wrap {
+        max-width: none;
+        flex: 1 1 100%;
+    }
+
+    .app-subbar .btn {
+        width: 100%;
+    }
+
+    .toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    
+    .table thead {
+        display: none;
+    }
+
+    .table,
+    .table tbody,
+    .table tr,
+    .table td {
+        display: block;
+        width: 100%;
+    }
+
+    .table tr {
+        border-bottom: 1px solid var(--border);
+        padding: 6px 0 12px;
+    }
+
+    .table td {
+        border: none;
+        padding: 5px 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        font-size: .72rem;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+        color: var(--text-soft);
+        font-weight: 800;
+        min-width: 82px;
+    }
+
+    .table td.card-cell-td::before {
+        display: none;
+    }
+
+    .row-actions {
+        justify-content: flex-start;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 10px;
+    }
+
+    
+    .card-tile__actions .icon-btn {
+        min-width: 0;
+        padding: 6px 8px;
+        font-size: .8rem;
+    }
+
+    .card-tile__actions .icon-btn span[aria-hidden="true"] {
+        display: none;
+    }
+
+    .modal__foot {
+        flex-direction: column-reverse;
+    }
+
+    .modal__foot .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .app-header__logo-text {
+        display: none;
+    }
+
+    .app-header__name {
+        max-width: 24vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

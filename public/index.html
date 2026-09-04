@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portal administrativo para gestão de cartas de card games.">
+    <title>Entrar | Portal de Cartas</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff5a00'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='white' font-family='sans-serif'%3EC%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <main class="login">
+        <section class="login__brand">
+            <span class="login__logo">
+                <span aria-hidden="true">🃏</span>
+                Portal de Cartas
+            </span>
+
+            <h1>Gestão de cartas em um só lugar</h1>
+
+            <p>
+                Cadastre, revise e mantenha o acervo de Magic, Pokémon e Yu-Gi-Oh!
+                sempre atualizado.
+            </p>
+
+            <div class="login__cards" aria-hidden="true">
+                <div class="login__card">🔥</div>
+                <div class="login__card">⚡</div>
+                <div class="login__card">🐉</div>
+            </div>
+        </section>
+
+        <section class="login__panel">
+            <form class="login__form" id="login-form" novalidate>
+                <h2>Entrar no portal</h2>
+                <p class="login__intro">Use as credenciais fornecidas pela equipe.</p>
+
+                <div class="alert alert--error" id="login-alert" role="alert" hidden></div>
+
+                <div class="field" id="field-email">
+                    <label class="field__label" for="email">E-mail</label>
+                    <input
+                        class="input"
+                        type="email"
+                        id="email"
+                        name="email"
+                        autocomplete="username"
+                        placeholder="voce@empresa.com"
+                        required
+                    >
+                    <span class="field__error" id="error-email"></span>
+                </div>
+
+                <div class="field" id="field-password">
+                    <label class="field__label" for="password">Senha</label>
+                    <div class="password-wrap">
+                        <input
+                            class="input"
+                            type="password"
+                            id="password"
+                            name="password"
+                            autocomplete="current-password"
+                            placeholder="Sua senha"
+                            required
+                        >
+                        <button class="password-toggle" type="button" id="toggle-password" aria-pressed="false">
+                            Mostrar
+                        </button>
+                    </div>
+                    <span class="field__error" id="error-password"></span>
+                </div>
+
+                <button class="btn btn--primary btn--block" type="submit" id="login-submit">
+                    <span class="btn__label">Entrar</span>
+                </button>
+
+                <div class="login__demo">
+                    <strong>Ambiente de avaliação.</strong>
+                    Use <code>admin@cartas.local</code> com a senha <code>admin123</code>.
+                    <button class="btn btn--link" type="button" id="fill-demo">Preencher para mim</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script type="module" src="/assets/js/pages/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead th {
+    text-align: left;
+    font-size: .74rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--text-muted);
+    background: var(--surface-muted);
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+
+.table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table tbody tr:hover {
+    background: var(--brand-soft);
+}
+
+.card-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 220px;
+}
+
+.thumb {
+    width: 44px;
+    height: 61px;
+    border-radius: 3px;
+    object-fit: cover;
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    flex: none;
+}
+
+.thumb--empty {
+    display: grid;
+    place-items: center;
+    color: var(--text-soft);
+    font-size: 1.2rem;
+}
+
+.card-cell__names strong {
+    display: block;
+    font-size: .95rem;
+}
+
+.card-cell__names span {
+    font-size: .84rem;
+    color: var(--text-muted);
+}
+
+.card-cell__names em {
+    font-size: .8rem;
+    color: var(--text-soft);
+    font-style: italic;
+}
+
+.row-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 6px 11px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: .84rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.icon-btn:hover {
+    background: var(--brand-soft);
+    border-color: var(--brand-border);
+    color: #b23f00;
+}
+
+.icon-btn--danger {
+    color: var(--danger);
+    border-color: #eec9cd;
+}
+
+.icon-btn--danger:hover {
+    background: var(--danger-soft);
+    border-color: #e5b4ba;
+    color: var(--danger-strong);
+}

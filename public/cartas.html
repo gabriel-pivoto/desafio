@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cartas | Portal de Cartas</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff5a00'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='white' font-family='sans-serif'%3EC%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+    <header class="app-header">
+        <span class="app-header__logo">
+            <span aria-hidden="true">🃏</span>
+            <span class="app-header__logo-text">Portal de Cartas</span>
+        </span>
+        <div class="app-header__spacer"></div>
+        <div class="app-header__user">
+            <span class="avatar" id="user-avatar" aria-hidden="true"></span>
+            <span class="app-header__name">
+                <span id="user-name">Carregando...</span>
+                <small id="user-email"></small>
+            </span>
+        </div>
+        <button class="btn btn--logout" type="button" id="logout"><span class="btn__label">Sair</span></button>
+    </header>
+
+    <div class="app-subbar">
+        <div class="app-subbar__inner">
+            <div class="search-wrap">
+                <label class="sr-only" for="filter-search">Buscar carta por nome</label>
+                <span class="search-wrap__icon" aria-hidden="true">⌕</span>
+                <input class="input" type="search" id="filter-search" autocomplete="off" placeholder="Procure por uma carta em inglês ou português">
+            </div>
+            <button class="btn btn--confirm" type="button" id="new-card">
+                <span aria-hidden="true">+</span>
+                <span class="btn__label">Nova carta</span>
+            </button>
+        </div>
+    </div>
+
+    <main class="page">
+        <div class="section-title">
+            <h1 class="section-title__text">Gerenciador de cartas</h1>
+            <p class="section-title__sub">Cadastre, edite e remova as cartas do acervo.</p>
+        </div>
+
+        <section class="summary" id="summary" aria-label="Resumo do acervo"></section>
+
+        <section class="toolbar" aria-label="Filtros da listagem">
+            <div class="field">
+                <label class="field__label" for="filter-game">Card game</label>
+                <select class="select" id="filter-game"><option value="">Todos</option></select>
+            </div>
+            <div class="field">
+                <label class="field__label" for="filter-rarity">Raridade</label>
+                <select class="select" id="filter-rarity"><option value="">Todas</option></select>
+            </div>
+            <div class="field">
+                <label class="field__label" for="filter-sort">Ordenar por</label>
+                <select class="select" id="filter-sort">
+                    <option value="recent">Mais recentes</option>
+                    <option value="oldest">Mais antigas</option>
+                    <option value="name">Nome (A-Z)</option>
+                    <option value="name_desc">Nome (Z-A)</option>
+                </select>
+            </div>
+            <div class="view-toggle" role="group" aria-label="Formato da listagem">
+                <button class="view-toggle__btn" type="button" id="view-table" aria-pressed="true"><span aria-hidden="true">☰</span> Lista</button>
+                <button class="view-toggle__btn" type="button" id="view-grid" aria-pressed="false"><span aria-hidden="true">▦</span> Galeria</button>
+            </div>
+        </section>
+
+        <div class="toolbar__status">
+            <span id="result-count" role="status" aria-live="polite"></span>
+            <button class="btn btn--link" type="button" id="clear-filters" hidden>Limpar filtros</button>
+        </div>
+
+        <section class="results" id="results" aria-label="Lista de cartas"></section>
+        <nav class="pagination" id="pagination" aria-label="Paginação" hidden></nav>
+    </main>
+
+    <dialog id="card-dialog" aria-labelledby="card-dialog-title">
+        <form id="card-form" novalidate>
+            <div class="modal__head">
+                <div>
+                    <h2 class="modal__title" id="card-dialog-title">Nova carta</h2>
+                    <p class="modal__subtitle" id="card-dialog-subtitle">Os campos marcados são obrigatórios.</p>
+                </div>
+                <button class="modal__close" type="button" id="card-dialog-close" aria-label="Fechar">×</button>
+            </div>
+
+            <div class="modal__body">
+                <div class="alert alert--error" id="card-form-alert" role="alert" hidden></div>
+
+                <div class="form-grid">
+                    <p class="form-section">Identificação</p>
+
+                    <div class="field field--full" id="field-name_en">
+                        <label class="field__label" for="name_en">Nome da carta em inglês</label>
+                        <input class="input" type="text" id="name_en" name="name_en" maxlength="180" autocomplete="off" required>
+                        <span class="field__error" id="error-name_en"></span>
+                    </div>
+
+                    <div class="field field--full" id="field-name_pt">
+                        <label class="field__label" for="name_pt">Nome da carta em português <span class="field__optional">(opcional)</span></label>
+                        <input class="input" type="text" id="name_pt" name="name_pt" maxlength="180" autocomplete="off">
+                        <span class="field__hint">Deixe em branco quando a carta não tiver versão traduzida.</span>
+                        <span class="field__error" id="error-name_pt"></span>
+                    </div>
+
+                    <p class="form-section">Classificação</p>
+
+                    <div class="field" id="field-game_id">
+                        <label class="field__label" for="game_id">Card game</label>
+                        <select class="select" id="game_id" name="game_id" required><option value="">Selecione o jogo</option></select>
+                        <span class="field__error" id="error-game_id"></span>
+                    </div>
+
+                    <div class="field" id="field-edition_id">
+                        <label class="field__label" for="edition_id">Edição da carta</label>
+                        <select class="select" id="edition_id" name="edition_id" required disabled><option value="">Selecione um card game primeiro</option></select>
+                        <span class="field__hint" id="edition-hint">A lista de edições é carregada conforme o card game escolhido.</span>
+                        <span class="select-loading" id="edition-loading" hidden>
+                            <span class="select-loading__dot" aria-hidden="true"></span>
+                            Buscando edições...
+                        </span>
+                        <span class="field__error" id="error-edition_id"></span>
+                    </div>
+
+                    <div class="field" id="field-rarity_id">
+                        <label class="field__label" for="rarity_id">Raridade</label>
+                        <select class="select" id="rarity_id" name="rarity_id" required><option value="">Selecione a raridade</option></select>
+                        <span class="field__error" id="error-rarity_id"></span>
+                    </div>
+
+                    <p class="form-section">Imagem</p>
+
+                    <div class="field field--full" id="field-image">
+                        <span class="field__label" id="image-label">Imagem da carta <span class="field__optional">(opcional)</span></span>
+                        <div class="uploader">
+                            <div class="uploader__preview" id="image-preview" aria-hidden="true">🖼️</div>
+                            <div class="uploader__actions">
+                                <input class="uploader__file" type="file" id="image" name="image" accept="image/png,image/jpeg,image/webp,image/gif">
+                                <button class="icon-btn" type="button" id="image-pick" aria-describedby="image-label">Escolher imagem</button>
+                                <button class="btn btn--link" type="button" id="image-remove" hidden>Remover imagem</button>
+                                <span class="uploader__name" id="image-name">JPG, PNG, WEBP ou GIF de até 2 MB.</span>
+                            </div>
+                        </div>
+                        <span class="field__error" id="error-image"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal__foot">
+                <button class="btn btn--ghost" type="button" id="card-cancel">Cancelar</button>
+                <button class="btn btn--confirm" type="submit" id="card-submit"><span class="btn__label">Salvar carta</span></button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+        <div class="confirm">
+            <div class="confirm__icon" aria-hidden="true">!</div>
+            <h2 class="confirm__title" id="confirm-title">Excluir carta</h2>
+            <p class="confirm__text">Esta ação remove a carta do acervo e não pode ser desfeita.</p>
+            <div class="confirm__card" id="confirm-card"></div>
+        </div>
+        <div class="modal__foot">
+            <button class="btn btn--ghost" type="button" id="confirm-cancel">Manter carta</button>
+            <button class="btn btn--danger" type="button" id="confirm-delete"><span class="btn__label">Excluir</span></button>
+        </div>
+    </dialog>
+
+    <script type="module" src="/assets/js/pages/cards.js"></script>
+</body>
+</html>

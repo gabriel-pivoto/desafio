@@ -1,0 +1,45 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: cartas-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cartas
+      MYSQL_USER: cartas
+      MYSQL_PASSWORD: cartas
+    ports:
+      - "${DB_HOST_PORT:-3307}:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-ucartas", "-pcartas"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: cartas-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: cartas
+      DB_USER: cartas
+      DB_PASS: cartas
+      APP_ENV: local
+    ports:
+      - "${APP_HOST_PORT:-8080}:80"
+    volumes:
+      - ./public:/var/www/html/public
+      - ./src:/var/www/html/src
+
+volumes:
+  db_data:

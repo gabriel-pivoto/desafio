@@ -1,0 +1,112 @@
+dialog {
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 0;
+    width: min(640px, calc(100vw - 32px));
+    box-shadow: var(--shadow-lg);
+    color: var(--text);
+    background: var(--surface);
+}
+
+dialog::backdrop {
+    background: rgba(20, 12, 6, .58);
+}
+
+.modal__head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 22px 14px;
+    border-bottom: 1px solid var(--border);
+    border-top: 4px solid var(--brand);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.modal__title {
+    font-size: 1.15rem;
+    font-weight: 800;
+}
+
+.modal__subtitle {
+    font-size: .86rem;
+    color: var(--text-muted);
+}
+
+.modal__close {
+    margin-left: auto;
+    border: none;
+    background: var(--surface-muted);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.modal__close:hover {
+    background: var(--brand-soft);
+    color: #b23f00;
+}
+
+.modal__body {
+    padding: 18px 22px 4px;
+    max-height: min(62vh, 560px);
+    overflow-y: auto;
+}
+
+.modal__foot {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding: 14px 22px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-muted);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+}
+
+.form-grid .field--full {
+    grid-column: 1 / -1;
+}
+
+.form-section {
+    grid-column: 1 / -1;
+    font-size: .74rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--brand-dark);
+    margin: 4px 0 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.form-section:first-child {
+    border-top: none;
+    padding-top: 0;
+}
+
+.select-loading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .82rem;
+    color: var(--brand-dark);
+    font-weight: 700;
+}
+
+.select-loading__dot {
+    width: 13px;
+    height: 13px;
+    border: 2px solid rgba(255, 90, 0, .28);
+    border-top-color: var(--brand);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}

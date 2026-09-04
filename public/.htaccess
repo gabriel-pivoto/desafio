@@ -1,0 +1,11 @@
+Options -Indexes
+
+RewriteEngine On
+
+RewriteRule ^cartas/?$ cartas.html [L]
+
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set Referrer-Policy "same-origin"
+</IfModule>

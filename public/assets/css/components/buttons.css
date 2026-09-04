@@ -1,0 +1,93 @@
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 9px 18px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.btn--primary {
+    background: var(--brand);
+    color: #fff;
+}
+
+.btn--primary:hover:not(:disabled) {
+    background: var(--brand-strong);
+}
+
+.btn--confirm {
+    background: var(--confirm);
+    color: #fff;
+}
+
+.btn--confirm:hover:not(:disabled) {
+    background: var(--confirm-strong);
+}
+
+.btn--ghost {
+    background: var(--surface);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+.btn--ghost:hover:not(:disabled) {
+    background: var(--surface-muted);
+}
+
+.btn--danger {
+    background: var(--danger);
+    color: #fff;
+}
+
+.btn--danger:hover:not(:disabled) {
+    background: var(--danger-strong);
+}
+
+.btn--link {
+    background: none;
+    border: none;
+    color: var(--brand-dark);
+    padding: 4px 6px;
+    min-height: auto;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn__spinner {
+    width: 15px;
+    height: 15px;
+    border: 2px solid rgba(255, 255, 255, .45);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+}
+
+.btn.is-loading .btn__label {
+    opacity: .8;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}

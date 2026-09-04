@@ -1,0 +1,128 @@
+.login {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    min-height: 100vh;
+}
+
+.login__brand {
+    background: linear-gradient(125deg, #2b1000 0%, #8f2f00 52%, #ff5a00 100%);
+    color: #fff;
+    padding: 56px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.login__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.login__brand h1 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    max-width: 15ch;
+}
+
+.login__brand p {
+    color: rgba(255, 255, 255, .85);
+    max-width: 42ch;
+}
+
+.login__cards {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.login__card {
+    width: 74px;
+    height: 104px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .3);
+    display: grid;
+    place-items: center;
+    font-size: 1.7rem;
+    transform: rotate(-6deg);
+}
+
+.login__card:nth-child(2) { transform: rotate(3deg) translateY(6px); }
+.login__card:nth-child(3) { transform: rotate(9deg) translateY(-4px); }
+
+.login__panel {
+    display: grid;
+    place-items: center;
+    padding: 40px 24px;
+    background: var(--surface);
+}
+
+.login__form {
+    width: min(400px, 100%);
+}
+
+.login__form h2 {
+    font-size: 1.45rem;
+    margin-bottom: 4px;
+}
+
+.login__intro {
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.password-wrap {
+    position: relative;
+}
+
+.password-wrap .input {
+    padding-right: 92px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    border: none;
+    background: none;
+    color: var(--brand-dark);
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 3px;
+}
+
+.password-toggle:hover {
+    background: var(--brand-soft);
+}
+
+.login__demo {
+    margin-top: 24px;
+    padding: 13px 15px;
+    background: var(--brand-soft);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-sm);
+    font-size: .86rem;
+    color: var(--text-muted);
+}
+
+.login__demo strong {
+    color: var(--text);
+}
+
+.login__demo code {
+    background: #fff;
+    border: 1px solid var(--brand-border);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: .92em;
+}

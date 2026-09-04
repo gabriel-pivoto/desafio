@@ -1,0 +1,71 @@
+.page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(18px, 3vw, 28px) clamp(14px, 4vw, 32px) 60px;
+}
+
+.section-title {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 46px;
+    height: 3px;
+    background: var(--brand);
+}
+
+.section-title__text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.section-title__sub {
+    color: var(--text-muted);
+    font-size: .9rem;
+    padding-bottom: 3px;
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.summary__item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-top: 3px solid var(--brand);
+    padding: 10px 14px;
+    box-shadow: var(--shadow-sm);
+}
+
+.summary__item[data-game="pokemon"] { border-top-color: #f2b705; }
+.summary__item[data-game="yugioh"] { border-top-color: #2f6fb8; }
+.summary__item[data-game="magic"] { border-top-color: var(--brand); }
+
+.summary__value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.summary__label {
+    font-size: .76rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 700;
+}

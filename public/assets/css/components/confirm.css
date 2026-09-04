@@ -1,0 +1,45 @@
+.confirm {
+    padding: 24px 24px 8px;
+    text-align: center;
+}
+
+.confirm__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--danger-soft);
+    color: var(--danger);
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 auto 14px;
+}
+
+.confirm__title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.confirm__text {
+    color: var(--text-muted);
+    font-size: .93rem;
+}
+
+.confirm__card {
+    margin: 16px auto 0;
+    padding: 11px 13px;
+    background: var(--surface-muted);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.confirm__card-meta {
+    font-size: .82rem;
+    color: var(--text-muted);
+}
